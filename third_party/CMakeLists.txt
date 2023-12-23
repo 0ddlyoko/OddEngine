@@ -1,9 +1,13 @@
 if (ENABLE_TESTS)
     # Add Google Test
-    set(install_gtest OFF)
-    set(install_gmock OFF)
-    set(build_gmock ON)
+    set(INSTALL_GTEST OFF)
+    set(INSTALL_GMOCK OFF)
+    set(BUILD_GMOCK ON)
+
+    if ("${CMAKE_SYSTEM_NAME}" STREQUAL "CYGWIN")
+        add_definitions(-DTEST_HAS_PTHREAD=0)
+        set(gtest_disable_pthreads ON)
+    endif()
+
     add_subdirectory("googletest")
-#    find_package(GTest REQUIRED)
-#    include_directories(${GTEST_INCLUDE_DIRS})
 endif(ENABLE_TESTS)

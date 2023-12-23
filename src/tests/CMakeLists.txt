@@ -3,11 +3,12 @@
 include(FindTests)
 
 add_library(OddEngineTest STATIC main.cpp)
-target_link_libraries(OddEngineTest PUBLIC OddEngine gtest)
+target_link_libraries(OddEngineTest PUBLIC OddEngine gtest gmock)
 
 # Find tests
 set(test_dirs
-    core/allocator
+        core/allocator
+        core/util
 )
 
 foreach(test_dir ${test_dirs})
