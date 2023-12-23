@@ -5,12 +5,13 @@
 add_subdirectory(core)
 
 # Create the core app
-add_library(OddEngine SHARED)
-target_link_libraries(OddEngine PUBLIC core)
+add_library(OddEngine INTERFACE)
+target_link_libraries(OddEngine INTERFACE core)
 
 # Create the app
 add_executable(OddEngineApp main.cpp)
-target_link_libraries(OddEngineApp PUBLIC OddEngine)
+target_link_libraries(OddEngineApp OddEngine)
+add_dependencies(OddEngineApp OddEngine)
 
 # Tests
 
