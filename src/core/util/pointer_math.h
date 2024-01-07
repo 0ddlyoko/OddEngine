@@ -53,6 +53,16 @@ namespace Core::Util::PointerMath {
     uint8_t getAlignWithHeader(const void* p, uint8_t alignment);
 
     /**
+     * Retrieves the alignment of given pointer with given alignment.
+     *
+     * @param p         The pointer
+     * @param size      The size of the template
+     * @param alignment The alignment. Must be a power of 2
+     * @return
+     */
+    uint8_t getAlignWithHeader(const void* p, size_t size, uint8_t alignment);
+
+    /**
      * Retrieves the alignment of given pointer with given alignment, but backward (to the left).
      *
      * @param p         The pointer

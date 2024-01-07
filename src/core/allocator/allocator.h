@@ -17,7 +17,6 @@ namespace Core::Allocator {
 
         [[nodiscard]] virtual void* allocate(size_t size, uint8_t alignment) = 0;
         virtual void deallocate(void* p) = 0;
-        virtual void clear() = 0;
         [[nodiscard]] void* getStart() const;
         [[nodiscard]] size_t getSize() const;
         [[nodiscard]] size_t getUsedMemory() const;

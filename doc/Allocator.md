@@ -38,10 +38,10 @@ You can allocate memory and deallocate it whenever you want.
 New Allocation can be made, and will be set to the first best fit, which will cause less fragmentation than first-fit or worst-fit.
 
 ### Deallocations
-Individual deallocatoins can be made.
+Individual deallocations can be made.
 
-## Pool Allocator
-A Pool Allocator allocates a bunch of fixed size. This results in a fast allocation and deallocation, without needing to align each allocation since all allocations have the same size.
+## Block Allocator
+A Block Allocator allocates a bunch of fixed size. This results in a fast allocation and deallocation, without needing to align each allocation since all allocations have the same size.
 We store internally a linked list of pointers to free blocks.
 
 ### Allocations

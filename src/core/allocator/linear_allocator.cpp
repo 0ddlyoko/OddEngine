@@ -13,7 +13,7 @@ namespace Core::Allocator {
         uintptr_t current_free = (uintptr_t) _current_free + adjustment;
 
         _current_free = (void *) (current_free + size);
-        _used_memory += size;
+        _used_memory += adjustment + size;
         _num_allocations++;
 
         return (void *) current_free;
@@ -21,12 +21,6 @@ namespace Core::Allocator {
 
     void LinearAllocator::deallocate(void *p) {
         // Cannot deallocate in a linear allocator
-    }
-
-    void LinearAllocator::clear() {
-        _current_free = getStart();
-        _used_memory = 0;
-        _num_allocations = 0;
     }
 
     void *LinearAllocator::getCurrentFree() {

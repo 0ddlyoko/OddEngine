@@ -44,9 +44,7 @@ TEST(LinearAllocatorTest, BasicMethods) {
     ASSERT_EQ(current_pointer, linearAllocator.getCurrentFree());
     ASSERT_EQ(main_pointer, linearAllocator.getStart());
     ASSERT_EQ(1000, linearAllocator.getSize());
-    ASSERT_EQ(sizeof_int + alignof_long, linearAllocator.getUsedMemory());
+    // alignof_int + sizeof_long because it's not correctly aligned
+    ASSERT_EQ(sizeof_int + alignof_int + sizeof_long, linearAllocator.getUsedMemory());
     ASSERT_EQ(2, linearAllocator.getNumAllocations());
-
-    // Clear at the end to avoid having error
-    linearAllocator.clear();
 }

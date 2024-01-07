@@ -5,7 +5,7 @@
 namespace Core::Allocator {
     /**
      * Linear allocation.
-     * Allocate memory
+     * Allocate memory one after the other. It's not possible to deallocate
      */
     class LinearAllocator: public Allocator {
 
@@ -14,7 +14,6 @@ namespace Core::Allocator {
 
         void *allocate(size_t size, uint8_t alignment) override;
         void deallocate(void *p) override;
-        void clear() override;
         void* getCurrentFree();
     private:
         void* _current_free;

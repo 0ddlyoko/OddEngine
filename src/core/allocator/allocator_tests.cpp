@@ -8,7 +8,6 @@ public:
 
     MOCK_METHOD(void*, allocate, (size_t size, uint8_t alignment), (override));
     MOCK_METHOD(void, deallocate, (void* p), (override));
-    MOCK_METHOD(void, clear, (), (override));
 };
 
 TEST(AllocatorTest, BasicMethods) {
