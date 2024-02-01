@@ -23,7 +23,7 @@ namespace Core::Allocator {
         // Cannot deallocate in a linear allocator
     }
 
-    void *LinearAllocator::getCurrentFree() {
+    void *LinearAllocator::getCurrentFree() const {
         return _current_free;
     }
 }

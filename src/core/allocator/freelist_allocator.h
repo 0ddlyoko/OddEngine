@@ -16,7 +16,7 @@ namespace Core::Allocator {
         void *allocate(size_t size, uint8_t alignment) override;
         void deallocate(void *p) override;
 
-        void *getStartFreeBlock();
+        [[nodiscard]] void *getStartFreeBlock() const;
 
     private:
 

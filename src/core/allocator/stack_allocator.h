@@ -13,8 +13,8 @@ namespace Core::Allocator {
 
         void *allocate(size_t size, uint8_t alignment) override;
         void deallocate(void *p) override;
-        void* getCurrentFree();
-        void* getLastAllocator();
+        [[nodiscard]] void* getCurrentFree() const;
+        [[nodiscard]] void* getLastAllocator() const;
     private:
 
         struct AllocationHeader {

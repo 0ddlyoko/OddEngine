@@ -33,11 +33,11 @@ namespace Core::Allocator {
         _current_free = header_address->previous_address;
     }
 
-    void *StackAllocator::getCurrentFree() {
+    void *StackAllocator::getCurrentFree() const {
         return _current_free;
     }
 
-    void *StackAllocator::getLastAllocator() {
+    void *StackAllocator::getLastAllocator() const {
         return _last_allocation;
     }
 }

@@ -124,7 +124,7 @@ namespace Core::Allocator {
         _num_allocations--;
     }
 
-    void *FreeListAllocator::getStartFreeBlock() {
+    void *FreeListAllocator::getStartFreeBlock() const {
         return _start_free_block;
     }
 }

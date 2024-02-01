@@ -28,5 +28,12 @@ int main() {
 
 
 
+    size_t block_size = 9;
+    uint8_t alignment = 4;
+    size_t real_block_size = (size_t) Core::Util::PointerMath::align((void*) block_size, alignment);
+    std::cout << real_block_size << std::endl;
+
+
+
     return 0;
 }
