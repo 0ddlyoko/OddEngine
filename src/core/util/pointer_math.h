@@ -7,7 +7,7 @@
  * Pointer related math operation.
  * Inspired by https://github.com/tiagovcosta/aquaengine/blob/aea6de9f47ba0243b90c144dee4422efb2389cc7/AquaEngine/Utilities/PointerMath.h#L73
  */
-namespace Core::Util::PointerMath {
+namespace core::util::pointer_math {
 
     /**
      * Check if given pointer is aligned with given alignment.

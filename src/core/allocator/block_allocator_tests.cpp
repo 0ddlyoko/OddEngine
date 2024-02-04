@@ -19,7 +19,7 @@ TEST(BlockAllocatorTest, BasicMethods) {
     size_t size = sizeof(TestBlock);
     size_t align = alignof(TestBlock);
 
-    Core::Allocator::BlockAllocator blockAllocator(1000, main_pointer, size, align);
+    core::allocator::BlockAllocator blockAllocator(1000, main_pointer, size, align);
 
     ASSERT_EQ(main_pointer, blockAllocator.getStartFreeBlock());
     ASSERT_EQ(nullptr, ((FreeBlock *) blockAllocator.getStartFreeBlock())->next_free_address);
@@ -31,7 +31,7 @@ TEST(BlockAllocatorTest, BasicMethods) {
     ASSERT_EQ(size, blockAllocator.getBlockSize());
     ASSERT_EQ(align, blockAllocator.getAlignment());
 
-    current_pointer = Core::Util::PointerMath::align(current_pointer, align);
+    current_pointer = core::util::pointer_math::align(current_pointer, align);
     ASSERT_EQ(current_pointer, blockAllocator.getStartFreeBlock());
     size_t total_size = 1000 - ((uintptr_t) current_pointer - (uintptr_t) main_pointer);
     ASSERT_EQ(total_size / size, blockAllocator.getTotalNumberOfBlocks());
@@ -40,7 +40,7 @@ TEST(BlockAllocatorTest, BasicMethods) {
     auto first_memory = (TestBlock*) blockAllocator.allocate(size, align);
     ASSERT_EQ(current_pointer, first_memory);
 
-    current_pointer = Core::Util::PointerMath::add(current_pointer, size);
+    current_pointer = core::util::pointer_math::add(current_pointer, size);
     ASSERT_EQ(current_pointer, blockAllocator.getStartFreeBlock());
     ASSERT_EQ(main_pointer, blockAllocator.getStart());
     ASSERT_EQ(1000, blockAllocator.getSize());
@@ -52,7 +52,7 @@ TEST(BlockAllocatorTest, BasicMethods) {
     auto second_memory = (TestBlock*) blockAllocator.allocate(size, align);
     ASSERT_EQ(current_pointer, second_memory);
 
-    current_pointer = Core::Util::PointerMath::add(current_pointer, size);
+    current_pointer = core::util::pointer_math::add(current_pointer, size);
     ASSERT_EQ(current_pointer, blockAllocator.getStartFreeBlock());
     ASSERT_EQ(main_pointer, blockAllocator.getStart());
     ASSERT_EQ(1000, blockAllocator.getSize());
@@ -62,7 +62,7 @@ TEST(BlockAllocatorTest, BasicMethods) {
 
     // Free first block
     blockAllocator.deallocate(first_memory);
-    current_pointer = Core::Util::PointerMath::align(main_pointer, align);
+    current_pointer = core::util::pointer_math::align(main_pointer, align);
     ASSERT_EQ(current_pointer, blockAllocator.getStartFreeBlock());
     ASSERT_EQ(main_pointer, blockAllocator.getStart());
     ASSERT_EQ(1000, blockAllocator.getSize());
@@ -74,8 +74,8 @@ TEST(BlockAllocatorTest, BasicMethods) {
     auto third_memory = (TestBlock*) blockAllocator.allocate(size, align);
     ASSERT_EQ(current_pointer, third_memory);
 
-    current_pointer = Core::Util::PointerMath::add(current_pointer, size);
-    current_pointer = Core::Util::PointerMath::add(current_pointer, size);
+    current_pointer = core::util::pointer_math::add(current_pointer, size);
+    current_pointer = core::util::pointer_math::add(current_pointer, size);
 
     ASSERT_EQ(current_pointer, blockAllocator.getStartFreeBlock());
     ASSERT_EQ(main_pointer, blockAllocator.getStart());

@@ -2,7 +2,7 @@
 
 #include "allocator.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
     /**
      * FreeList Allocator.
      * Allocate memory where it's possible. Try to match best-match to avoid having hole.

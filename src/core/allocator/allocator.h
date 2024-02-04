@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace Core::Allocator {
+namespace core::allocator {
     /**
      * Fast memory allocation with memory leak detection.
      * "Allocator" is an abstract class that will be implemented by custom allocator type, as LinearAllocator, StackAllocator, ...

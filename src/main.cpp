@@ -21,16 +21,16 @@ int main() {
 //    std::cout << (b + 1) << std::endl;
 
     std::cout << b << std::endl;
-    void* c = Core::Util::PointerMath::add(b, 4);
+    void* c = core::util::pointer_math::add(b, 4);
     std::cout << c << std::endl;
 
-    std::cout << unsigned(Core::Util::PointerMath::getAlignment(reinterpret_cast<const void *>(47), 8)) << std::endl;
+    std::cout << unsigned(core::util::pointer_math::getAlignment(reinterpret_cast<const void *>(47), 8)) << std::endl;
 
 
 
     size_t block_size = 9;
     uint8_t alignment = 4;
-    size_t real_block_size = (size_t) Core::Util::PointerMath::align((void*) block_size, alignment);
+    size_t real_block_size = (size_t) core::util::pointer_math::align((void*) block_size, alignment);
     std::cout << real_block_size << std::endl;
 
 

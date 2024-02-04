@@ -2,11 +2,11 @@
 #include "linear_allocator.h"
 #include "../util/pointer_math.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
     LinearAllocator::LinearAllocator(size_t size, void *start) : Allocator(size, start), _current_free(start) {}
 
     void *LinearAllocator::allocate(size_t size, uint8_t alignment) {
-        size_t adjustment = Core::Util::PointerMath::getAlignment(_current_free, alignment);
+        size_t adjustment = core::util::pointer_math::getAlignment(_current_free, alignment);
 
         if (_used_memory + adjustment + size > _size) return nullptr;
 

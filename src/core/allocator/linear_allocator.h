@@ -2,7 +2,7 @@
 
 #include "allocator.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
     /**
      * Linear allocation.
      * Allocate memory one after the other. It's not possible to deallocate

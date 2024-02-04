@@ -2,7 +2,7 @@
 
 #include "allocator.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
     /**
      * Stack allocation.
      */

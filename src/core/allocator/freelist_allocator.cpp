@@ -2,7 +2,7 @@
 #include "freelist_allocator.h"
 #include "../util/pointer_math.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
     FreeListAllocator::FreeListAllocator(size_t size, void *start): Allocator(size, start) {
         assert(size > sizeof(FreeBlock));
         _start_free_block = (FreeBlock*) start;
@@ -19,7 +19,7 @@ namespace Core::Allocator {
         FreeBlock* current_free_block = _start_free_block;
         FreeBlock* previous_free_block = nullptr;
         while (current_free_block != nullptr) {
-            size_t block_alignment = Core::Util::PointerMath::getAlignWithHeader<AllocationHeader>(current_free_block, alignment);
+            size_t block_alignment = core::util::pointer_math::getAlignWithHeader<AllocationHeader>(current_free_block, alignment);
             size_t block_real_size = block_alignment + size;
             if (current_free_block->size == block_real_size) {
                 best_match = current_free_block;
@@ -52,7 +52,7 @@ namespace Core::Allocator {
             }
         } else {
             // It's possible
-            auto* next_free_block = (FreeBlock*) Core::Util::PointerMath::add(best_match, size_to_use);
+            auto* next_free_block = (FreeBlock*) core::util::pointer_math::add(best_match, size_to_use);
             next_free_block->size = best_match->size - size_to_use;
             next_free_block->next_free_address = best_match->next_free_address;
             if (best_match_previous == nullptr) {
@@ -61,8 +61,8 @@ namespace Core::Allocator {
                 best_match_previous->next_free_address = next_free_block;
             }
         }
-        void* aligned_address = Core::Util::PointerMath::add(best_match, best_match_alignment);
-        auto* header_address = (AllocationHeader*) Core::Util::PointerMath::remove(aligned_address, sizeof(AllocationHeader));
+        void* aligned_address = core::util::pointer_math::add(best_match, best_match_alignment);
+        auto* header_address = (AllocationHeader*) core::util::pointer_math::remove(aligned_address, sizeof(AllocationHeader));
         header_address->adjustment = best_match_alignment;
         header_address->size = size_to_use;
 
@@ -73,9 +73,9 @@ namespace Core::Allocator {
     }
 
     void FreeListAllocator::deallocate(void *p) {
-        auto* header_address = (AllocationHeader*) Core::Util::PointerMath::remove(p, sizeof(AllocationHeader));
+        auto* header_address = (AllocationHeader*) core::util::pointer_math::remove(p, sizeof(AllocationHeader));
         size_t header_size = header_address->size;
-        void* start_address = Core::Util::PointerMath::remove(p, header_address->adjustment);
+        void* start_address = core::util::pointer_math::remove(p, header_address->adjustment);
 
         // Find free block before this one
         FreeBlock* free_block_before = _start_free_block;

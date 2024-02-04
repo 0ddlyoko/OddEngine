@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Core::Util::PointerMath {
+namespace core::util::pointer_math {
     template <class T>
     bool isAligned(const T* p) {
         return isAligned(p, alignof(T));

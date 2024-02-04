@@ -2,9 +2,9 @@
 #include <gmock/gmock.h>
 #include "allocator.h"
 
-class MockAllocator : public Core::Allocator::Allocator {
+class MockAllocator : public core::allocator::Allocator {
 public:
-    MockAllocator(size_t size, void* start): Core::Allocator::Allocator(size, start) {}
+    MockAllocator(size_t size, void* start): core::allocator::Allocator(size, start) {}
 
     MOCK_METHOD(void*, allocate, (size_t size, uint8_t alignment), (override));
     MOCK_METHOD(void, deallocate, (void* p), (override));

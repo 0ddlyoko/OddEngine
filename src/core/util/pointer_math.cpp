@@ -1,6 +1,6 @@
 #include "pointer_math.h"
 
-namespace Core::Util::PointerMath {
+namespace core::util::pointer_math {
     bool isAligned(const void* p, uint8_t alignment) {
         return getAlignment(p, alignment) == 0;
     }

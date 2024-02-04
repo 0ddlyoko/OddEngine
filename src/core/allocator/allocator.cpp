@@ -2,7 +2,7 @@
 #include <utility>
 #include "allocator.h"
 
-namespace Core::Allocator {
+namespace core::allocator {
 
     Allocator::Allocator(size_t size, void *start): _size(size), _start(start), _used_memory(0), _num_allocations(0) {}
     Allocator::~Allocator() {

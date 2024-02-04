@@ -3,7 +3,7 @@
 #include "allocator.h"
 
 
-namespace Core::Allocator {
+namespace core::allocator {
     /**
      * Block Allocator.
      * Allocate memory per fixed block size

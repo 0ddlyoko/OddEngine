@@ -3,10 +3,10 @@
 Allocators are used to have a fast memory allocation with memory leak detection.
 We can have different kind of allocators.
 
-- [Linear Allocator](#linear-Allocator)
-- [Stack Allocator](#stack-Allocator)
-- [FreeList Allocator](#freelist-Allocator)
-- [Pool Allocator](#pool-Allocator)
+- [Linear Allocator](#linear-allocator)
+- [Stack Allocator](#stack-allocator)
+- [FreeList Allocator](#freelist-allocator)
+- [Block Allocator](#block-allocator)
 
 ## Linear Allocator
 A Linear Allocator is the simplest and fastest type of Allocator.

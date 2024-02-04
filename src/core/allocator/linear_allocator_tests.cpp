@@ -7,7 +7,7 @@ TEST(LinearAllocatorTest, BasicMethods) {
     void* main_pointer = malloc(1000);
     void* current_pointer = main_pointer;
 
-    Core::Allocator::LinearAllocator linearAllocator(1000, main_pointer);
+    core::allocator::LinearAllocator linearAllocator(1000, main_pointer);
 
     ASSERT_EQ(main_pointer, linearAllocator.getCurrentFree());
     ASSERT_EQ(main_pointer, linearAllocator.getStart());
@@ -23,10 +23,10 @@ TEST(LinearAllocatorTest, BasicMethods) {
     // Allocate some memory to see if it's working fine
     int* memory_int = (int *) linearAllocator.allocate(sizeof_int, alignof_int);
     *memory_int = 42;
-    current_pointer = Core::Util::PointerMath::align(current_pointer, alignof_int);
+    current_pointer = core::util::pointer_math::align(current_pointer, alignof_int);
 
     ASSERT_EQ(current_pointer, memory_int);
-    current_pointer = Core::Util::PointerMath::add(current_pointer, sizeof_int);
+    current_pointer = core::util::pointer_math::add(current_pointer, sizeof_int);
     ASSERT_EQ(current_pointer, linearAllocator.getCurrentFree());
     ASSERT_EQ(main_pointer, linearAllocator.getStart());
     ASSERT_EQ(1000, linearAllocator.getSize());
@@ -37,10 +37,10 @@ TEST(LinearAllocatorTest, BasicMethods) {
     // Allocate another memory
     long* memory_long = (long *) linearAllocator.allocate(sizeof_long, alignof_long);
     *memory_long = 42L;
-    current_pointer = Core::Util::PointerMath::align(current_pointer, alignof_long);
+    current_pointer = core::util::pointer_math::align(current_pointer, alignof_long);
 
     ASSERT_EQ(current_pointer, memory_long);
-    current_pointer = Core::Util::PointerMath::add(current_pointer, sizeof_long);
+    current_pointer = core::util::pointer_math::add(current_pointer, sizeof_long);
     ASSERT_EQ(current_pointer, linearAllocator.getCurrentFree());
     ASSERT_EQ(main_pointer, linearAllocator.getStart());
     ASSERT_EQ(1000, linearAllocator.getSize());
